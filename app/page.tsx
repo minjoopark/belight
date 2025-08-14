@@ -6,6 +6,27 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [language, setLanguage] = useState<'ko' | 'en'>('ko');
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Check for saved theme preference first
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme === 'dark') {
+      setDarkMode(true);
+      document.documentElement.classList.add('dark');
+    } else if (savedTheme === 'light') {
+      setDarkMode(false);
+      document.documentElement.classList.remove('dark');
+    } else {
+      // No saved preference, use system preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (prefersDark) {
+        setDarkMode(true);
+        document.documentElement.classList.add('dark');
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +35,18 @@ export default function Home() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleDarkMode = () => {
+    if (darkMode) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      setDarkMode(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      setDarkMode(true);
+    }
+  };
 
   // Translations
   const content = {
@@ -26,7 +59,7 @@ export default function Home() {
         contact: "오시는 길"
       },
       hero: {
-        tagline: "고객의 문제를 해결하고 가치를 더합니다",
+        tagline: "고객에게 빛이 되는 법률 사무소",
         subtitle: "30년 이상의 전통과 신뢰를 바탕으로 최고의 법률 서비스를 제공합니다",
         contactBtn: "상담 문의",
         practiceBtn: "업무 분야"
@@ -166,7 +199,7 @@ export default function Home() {
         contact: "Contact"
       },
       hero: {
-        tagline: "Solving Problems, Adding Value",
+        tagline: "Solving problems, adding values",
         subtitle: "Providing premier legal services with over 30 years of tradition and trust",
         contactBtn: "Contact Us",
         practiceBtn: "Practice Areas"
@@ -302,46 +335,69 @@ export default function Home() {
   const t = content[language];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors">
       {/* Header */}
       <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-sm'
+        isScrolled 
+          ? 'bg-white dark:bg-slate-900 shadow-md dark:shadow-slate-800/50' 
+          : 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm'
       }`}>
         <nav className="container mx-auto px-6">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
               <h1 className="text-2xl font-bold tracking-wider">
-                <span className="text-navy-900">법률사무소</span>
-                <span className="text-amber-600 ml-2">광화</span>
+                <span className="text-navy-900 dark:text-gray-100">법률사무소</span>
+                <span className="text-amber-600 dark:text-amber-400 ml-2">광화</span>
               </h1>
-              <span className="ml-3 text-sm text-gray-500 hidden lg:block">
+              <span className="ml-3 text-sm text-gray-500 dark:text-gray-400 hidden lg:block">
                 Law Office Gwanghwa
               </span>
             </div>
             
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#home" className="text-gray-700 hover:text-navy-900 transition font-medium underline-animation">{t.nav.home}</a>
-              <a href="#practice" className="text-gray-700 hover:text-navy-900 transition font-medium underline-animation">{t.nav.practice}</a>
-              <a href="#attorneys" className="text-gray-700 hover:text-navy-900 transition font-medium underline-animation">{t.nav.attorneys}</a>
-              <a href="#about" className="text-gray-700 hover:text-navy-900 transition font-medium underline-animation">{t.nav.about}</a>
-              <a href="#contact" className="text-gray-700 hover:text-navy-900 transition font-medium underline-animation">{t.nav.contact}</a>
+              <a href="#home" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">{t.nav.home}</a>
+              <a href="#practice" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">{t.nav.practice}</a>
+              <a href="#attorneys" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">{t.nav.attorneys}</a>
+              <a href="#about" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">{t.nav.about}</a>
+              <a href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">{t.nav.contact}</a>
+              
+              {/* Dark Mode Toggle */}
+              <button
+                onClick={toggleDarkMode}
+                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors"
+                aria-label="Toggle dark mode"
+              >
+                {darkMode ? (
+                  <svg className="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                  </svg>
+                )}
+              </button>
               
               {/* Language Toggle */}
-              <div className="flex items-center border-l pl-6 ml-2">
+              <div className="flex items-center border-l dark:border-slate-700 pl-6 ml-2">
                 <button
                   onClick={() => setLanguage('ko')}
                   className={`px-2 py-1 text-sm font-medium transition-colors ${
-                    language === 'ko' ? 'text-amber-600' : 'text-gray-500 hover:text-gray-700'
+                    language === 'ko' 
+                      ? 'text-amber-600 dark:text-amber-400' 
+                      : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
                   }`}
                 >
                   한국어
                 </button>
-                <span className="text-gray-400 mx-1">|</span>
+                <span className="text-gray-400 dark:text-gray-600 mx-1">|</span>
                 <button
                   onClick={() => setLanguage('en')}
                   className={`px-2 py-1 text-sm font-medium transition-colors ${
-                    language === 'en' ? 'text-amber-600' : 'text-gray-500 hover:text-gray-700'
+                    language === 'en' 
+                      ? 'text-amber-600 dark:text-amber-400' 
+                      : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
                   }`}
                 >
                   English
@@ -355,31 +411,37 @@ export default function Home() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <div className="space-y-1.5">
-                <span className="block w-6 h-0.5 bg-gray-800 transition-transform"></span>
-                <span className="block w-6 h-0.5 bg-gray-800 transition-opacity"></span>
-                <span className="block w-6 h-0.5 bg-gray-800 transition-transform"></span>
+                <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 transition-transform"></span>
+                <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 transition-opacity"></span>
+                <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 transition-transform"></span>
               </div>
             </button>
           </div>
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <div className="md:hidden border-t py-4 space-y-3">
-              <a href="#home" className="block py-2 text-gray-700 hover:text-navy-900">{t.nav.home}</a>
-              <a href="#practice" className="block py-2 text-gray-700 hover:text-navy-900">{t.nav.practice}</a>
-              <a href="#attorneys" className="block py-2 text-gray-700 hover:text-navy-900">{t.nav.attorneys}</a>
-              <a href="#about" className="block py-2 text-gray-700 hover:text-navy-900">{t.nav.about}</a>
-              <a href="#contact" className="block py-2 text-gray-700 hover:text-navy-900">{t.nav.contact}</a>
-              <div className="flex gap-4 pt-3 border-t">
+            <div className="md:hidden border-t dark:border-slate-800 py-4 space-y-3 bg-white dark:bg-slate-900">
+              <a href="#home" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100">{t.nav.home}</a>
+              <a href="#practice" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100">{t.nav.practice}</a>
+              <a href="#attorneys" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100">{t.nav.attorneys}</a>
+              <a href="#about" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100">{t.nav.about}</a>
+              <a href="#contact" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100">{t.nav.contact}</a>
+              <div className="flex items-center gap-4 pt-3 border-t dark:border-slate-800">
+                <button
+                  onClick={toggleDarkMode}
+                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800"
+                >
+                  {darkMode ? '☀️' : '🌙'}
+                </button>
                 <button
                   onClick={() => setLanguage('ko')}
-                  className={`text-sm font-medium ${language === 'ko' ? 'text-amber-600' : 'text-gray-500'}`}
+                  className={`text-sm font-medium ${language === 'ko' ? 'text-amber-600 dark:text-amber-400' : 'text-gray-500 dark:text-gray-400'}`}
                 >
                   한국어
                 </button>
                 <button
                   onClick={() => setLanguage('en')}
-                  className={`text-sm font-medium ${language === 'en' ? 'text-amber-600' : 'text-gray-500'}`}
+                  className={`text-sm font-medium ${language === 'en' ? 'text-amber-600 dark:text-amber-400' : 'text-gray-500 dark:text-gray-400'}`}
                 >
                   English
                 </button>
@@ -390,33 +452,37 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="relative pt-32 pb-20 bg-gradient-to-b from-slate-50 to-white">
+      <section id="home" className="relative pt-32 pb-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-8">
               <div className="inline-block">
-                <div className="text-6xl md:text-7xl font-light text-navy-900 mb-2">
-                  法
+                <div className="text-6xl md:text-7xl font-light text-navy-900 dark:text-gray-100 mb-2">
+                光化
+
                 </div>
-                <div className="w-16 h-0.5 bg-amber-600 mx-auto"></div>
+                <div className="w-16 h-0.5 bg-amber-600 dark:bg-amber-400 mx-auto"></div>
               </div>
             </div>
             
-            <h1 className="text-3xl md:text-5xl font-bold text-navy-900 mb-6 tracking-wide">
+            <h1 className="text-3xl md:text-5xl font-bold text-navy-900 dark:text-gray-100 mb-6 tracking-wide">
               {t.hero.tagline}
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-600 mb-4 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
               Since 1991
             </p>
             
-            <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
               {t.hero.subtitle}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#contact" className="bg-navy-900 text-white px-10 py-4 text-lg hover:bg-navy-800 transition-colors">
+              <a href="#contact" className="bg-navy-900 dark:bg-amber-600 text-white dark:text-navy-900 px-10 py-4 text-lg hover:bg-navy-800 dark:hover:bg-amber-500 transition-colors">
                 {t.hero.contactBtn}
+              </a>
+              <a href="#practice" className="border border-navy-900 dark:border-amber-600 text-navy-900 dark:text-amber-400 px-10 py-4 text-lg hover:bg-navy-900 dark:hover:bg-amber-600 hover:text-white dark:hover:text-navy-900 transition-colors">
+                {t.hero.practiceBtn}
               </a>
             </div>
           </div>
@@ -424,25 +490,25 @@ export default function Home() {
       </section>
 
       {/* Practice Areas */}
-      <section id="practice" className="py-24 bg-gray-50">
+      <section id="practice" className="py-24 bg-gray-50 dark:bg-slate-850">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy-900 dark:text-gray-100 mb-4">
               {t.practice.title}
             </h2>
-            <div className="w-24 h-0.5 bg-amber-600 mx-auto mb-6"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <div className="w-24 h-0.5 bg-amber-600 dark:bg-amber-400 mx-auto mb-6"></div>
+            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               {t.practice.subtitle}
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {t.practice.areas.map((area, index) => (
-              <div key={index} className="bg-white p-8 border-l-4 border-amber-600 hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-bold text-navy-900 mb-4">{area.title}</h3>
+              <div key={index} className="bg-white dark:bg-slate-800 p-8 border-l-4 border-amber-600 dark:border-amber-400 hover:shadow-lg dark:hover:shadow-slate-700/50 transition-shadow">
+                <h3 className="text-xl font-bold text-navy-900 dark:text-gray-100 mb-4">{area.title}</h3>
                 <ul className="space-y-2">
                   {area.details.map((detail, idx) => (
-                    <li key={idx} className="text-gray-600 text-sm leading-relaxed">
+                    <li key={idx} className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                       • {detail}
                     </li>
                   ))}
@@ -454,14 +520,14 @@ export default function Home() {
       </section>
 
       {/* Attorneys */}
-      <section id="attorneys" className="py-24 bg-white">
+      <section id="attorneys" className="py-24 bg-white dark:bg-slate-900">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy-900 dark:text-gray-100 mb-4">
               {t.attorneys.title}
             </h2>
-            <div className="w-24 h-0.5 bg-amber-600 mx-auto mb-6"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <div className="w-24 h-0.5 bg-amber-600 dark:bg-amber-400 mx-auto mb-6"></div>
+            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               {t.attorneys.subtitle}
             </p>
           </div>
@@ -471,15 +537,15 @@ export default function Home() {
               {t.attorneys.members.map((attorney, index) => (
                 <div key={index} className="text-center">
                   <div className="mb-6">
-                    <div className="w-48 h-48 bg-gray-200 rounded-full mx-auto mb-4"></div>
-                    <h3 className="text-2xl font-bold text-navy-900">{attorney.name}</h3>
-                    <p className="text-gray-500 text-sm mb-2">{attorney.hanja}</p>
-                    <p className="text-amber-600 font-medium">{attorney.title}</p>
+                    <div className="w-48 h-48 bg-gray-200 dark:bg-slate-700 rounded-full mx-auto mb-4 border-2 border-transparent dark:border-slate-600"></div>
+                    <h3 className="text-2xl font-bold text-navy-900 dark:text-gray-100">{attorney.name}</h3>
+                    <p className="text-gray-500 dark:text-gray-500 text-sm mb-2">{attorney.hanja}</p>
+                    <p className="text-amber-600 dark:text-amber-400 font-medium">{attorney.title}</p>
                   </div>
                   
                   <div className="text-left">
-                    <h4 className="font-bold text-navy-900 mb-3 text-sm">{t.attorneys.careerTitle}</h4>
-                    <ul className="space-y-1 text-sm text-gray-600">
+                    <h4 className="font-bold text-navy-900 dark:text-gray-200 mb-3 text-sm">{t.attorneys.careerTitle}</h4>
+                    <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
                       {attorney.timeline.map((item, idx) => (
                         <li key={idx}>
                           <span className="font-medium">{item.year}</span> {item.event}
@@ -489,8 +555,8 @@ export default function Home() {
                     
                     {attorney.specialties.length > 0 && (
                       <div className="mt-4">
-                        <h4 className="font-bold text-navy-900 mb-2 text-sm">{t.attorneys.activitiesTitle}</h4>
-                        <ul className="space-y-1 text-sm text-gray-600">
+                        <h4 className="font-bold text-navy-900 dark:text-gray-200 mb-2 text-sm">{t.attorneys.activitiesTitle}</h4>
+                        <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
                           {attorney.specialties.map((specialty, idx) => (
                             <li key={idx}>• {specialty}</li>
                           ))}
@@ -506,32 +572,32 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section id="about" className="py-24 bg-gray-50">
+      <section id="about" className="py-24 bg-gray-50 dark:bg-slate-850">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy-900 dark:text-gray-100 mb-4">
                 {t.about.title}
               </h2>
-              <div className="w-24 h-0.5 bg-amber-600 mx-auto"></div>
+              <div className="w-24 h-0.5 bg-amber-600 dark:bg-amber-400 mx-auto"></div>
             </div>
             
             <div className="prose prose-lg max-w-none">
-              <p className="text-gray-700 leading-relaxed mb-6">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                 {t.about.desc1}
               </p>
               
-              <p className="text-gray-700 leading-relaxed mb-6">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                 {t.about.desc2}
               </p>
               
               <div className="grid md:grid-cols-2 gap-8 mt-12">
                 <div>
-                  <h3 className="text-xl font-bold text-navy-900 mb-4">{t.about.coreValuesTitle}</h3>
-                  <ul className="space-y-3 text-gray-700">
+                  <h3 className="text-xl font-bold text-navy-900 dark:text-gray-100 mb-4">{t.about.coreValuesTitle}</h3>
+                  <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                     {t.about.coreValues.map((value, idx) => (
                       <li key={idx} className="flex items-start">
-                        <span className="text-amber-600 mr-3">•</span>
+                        <span className="text-amber-600 dark:text-amber-400 mr-3">•</span>
                         <span>{value}</span>
                       </li>
                     ))}
@@ -539,11 +605,11 @@ export default function Home() {
                 </div>
                 
                 <div>
-                  <h3 className="text-xl font-bold text-navy-900 mb-4">{t.about.promiseTitle}</h3>
-                  <ul className="space-y-3 text-gray-700">
+                  <h3 className="text-xl font-bold text-navy-900 dark:text-gray-100 mb-4">{t.about.promiseTitle}</h3>
+                  <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                     {t.about.promises.map((promise, idx) => (
                       <li key={idx} className="flex items-start">
-                        <span className="text-amber-600 mr-3">•</span>
+                        <span className="text-amber-600 dark:text-amber-400 mr-3">•</span>
                         <span>{promise}</span>
                       </li>
                     ))}
@@ -556,20 +622,20 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-24 bg-white">
+      <section id="contact" className="py-24 bg-white dark:bg-slate-900">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy-900 dark:text-gray-100 mb-4">
               {t.contact.title}
             </h2>
-            <div className="w-24 h-0.5 bg-amber-600 mx-auto"></div>
+            <div className="w-24 h-0.5 bg-amber-600 dark:bg-amber-400 mx-auto"></div>
           </div>
           
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
               <div>
-                <h3 className="text-xl font-bold text-navy-900 mb-6">{t.contact.contactTitle}</h3>
-                <div className="space-y-4 text-gray-700">
+                <h3 className="text-xl font-bold text-navy-900 dark:text-gray-100 mb-6">{t.contact.contactTitle}</h3>
+                <div className="space-y-4 text-gray-700 dark:text-gray-300">
                   <div>
                     <p className="font-medium mb-1">{t.contact.phone}</p>
                     <p className="text-lg">02-3276-3311</p>
@@ -586,8 +652,8 @@ export default function Home() {
               </div>
               
               <div>
-                <h3 className="text-xl font-bold text-navy-900 mb-6">{t.contact.addressTitle}</h3>
-                <div className="space-y-4 text-gray-700">
+                <h3 className="text-xl font-bold text-navy-900 dark:text-gray-100 mb-6">{t.contact.addressTitle}</h3>
+                <div className="space-y-4 text-gray-700 dark:text-gray-300">
                   <p className="text-lg leading-relaxed">
                     {t.contact.address.map((line, idx) => (
                       <span key={idx}>
@@ -606,9 +672,9 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="mt-12 p-8 bg-gray-50 text-center">
-              <p className="text-gray-600 mb-4">{t.contact.consultText}</p>
-              <a href="tel:0232763311" className="inline-block bg-navy-900 text-white px-8 py-3 hover:bg-navy-800 transition-colors">
+            <div className="mt-12 p-8 bg-gray-50 dark:bg-slate-800 text-center">
+              <p className="text-gray-600 dark:text-gray-400 mb-4">{t.contact.consultText}</p>
+              <a href="tel:0232763311" className="inline-block bg-navy-900 dark:bg-amber-600 text-white dark:text-navy-900 px-8 py-3 hover:bg-navy-800 dark:hover:bg-amber-500 transition-colors">
                 {t.contact.callBtn}
               </a>
             </div>
@@ -617,7 +683,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-navy-900 text-white py-12">
+      <footer className="bg-navy-900 dark:bg-slate-950 text-white py-12">
         <div className="container mx-auto px-6">
           <div className="text-center">
             <h3 className="text-xl font-bold mb-4">
@@ -635,7 +701,7 @@ export default function Home() {
                 : 'Tel: +82-2-3276-3311 | Fax: +82-2-3276-3319'
               }
             </p>
-            <div className="border-t border-gray-700 pt-6">
+            <div className="border-t border-gray-700 dark:border-slate-800 pt-6">
               <p className="text-sm text-gray-500">
                 {language === 'ko'
                   ? '사업자번호: 201-01-44379'

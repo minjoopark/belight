@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dark Mode Test</title>
+</head>
+<body>
+    <h1>Dark Mode Functionality Test</h1>
+    <iframe src="http://localhost:3000" width="100%" height="600"></iframe>
+    
+    <div id="test-results" style="margin-top: 20px; padding: 20px; border: 1px solid #ccc;">
+        <h2>Test Instructions:</h2>
+        <ol>
+            <li>Click the sun/moon icon in the header above</li>
+            <li>Observe if the background changes from white to dark slate</li>
+            <li>Check if the text colors invert appropriately</li>
+            <li>Refresh the page - the theme should persist</li>
+        </ol>
+        
+        <h3>Expected Behavior:</h3>
+        <ul>
+            <li>Light mode: White background, dark text, sun icon visible</li>
+            <li>Dark mode: Dark slate background, light text, moon icon visible</li>
+            <li>Theme persists after page refresh via localStorage</li>
+        </ul>
+    </div>
+    
+    <script>
+        // Test localStorage functionality
+        console.log('Testing dark mode functionality...');
+        
+        // Check if the page has dark mode code
+        fetch('http://localhost:3000')
+            .then(response => response.text())
+            .then(html => {
+                const hasDarkModeToggle = html.includes('toggleDarkMode');
+                const hasLocalStorage = html.includes('localStorage');
+                const hasDarkClasses = html.includes('dark:bg-slate');
+                
+                console.log('Dark mode toggle function present:', hasDarkModeToggle);
+                console.log('localStorage implementation present:', hasLocalStorage);
+                console.log('Dark mode classes present:', hasDarkClasses);
+                
+                if (hasDarkModeToggle && hasLocalStorage && hasDarkClasses) {
+                    console.log('✅ Dark mode implementation detected!');
+                } else {
+                    console.log('❌ Dark mode may not be fully implemented');
+                }
+            })
+            .catch(err => console.error('Error testing dark mode:', err));
+    </script>
+</body>
+</html>
