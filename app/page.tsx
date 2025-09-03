@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,6 +57,7 @@ export default function Home() {
         practice: "업무분야",
         attorneys: "구성원",
         about: "사무소 소개",
+        news: "언론보도",
         contact: "오시는 길"
       },
       hero: {
@@ -196,6 +198,7 @@ export default function Home() {
         practice: "Practice Areas",
         attorneys: "Attorneys",
         about: "About",
+        news: "News",
         contact: "Contact"
       },
       hero: {
@@ -360,6 +363,7 @@ export default function Home() {
               <a href="#practice" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">{t.nav.practice}</a>
               <a href="#attorneys" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">{t.nav.attorneys}</a>
               <a href="#about" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">{t.nav.about}</a>
+              <Link href="/news" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">{t.nav.news}</Link>
               <a href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">{t.nav.contact}</a>
               
               {/* Dark Mode Toggle */}
@@ -425,6 +429,7 @@ export default function Home() {
               <a href="#practice" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100">{t.nav.practice}</a>
               <a href="#attorneys" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100">{t.nav.attorneys}</a>
               <a href="#about" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100">{t.nav.about}</a>
+              <Link href="/news" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100">{t.nav.news}</Link>
               <a href="#contact" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100">{t.nav.contact}</a>
               <div className="flex items-center gap-4 pt-3 border-t dark:border-slate-800">
                 <button
@@ -481,9 +486,7 @@ export default function Home() {
               <a href="#contact" className="bg-navy-900 dark:bg-amber-600 text-white dark:text-navy-900 px-10 py-4 text-lg hover:bg-navy-800 dark:hover:bg-amber-500 transition-colors">
                 {t.hero.contactBtn}
               </a>
-              <a href="#practice" className="border border-navy-900 dark:border-amber-600 text-navy-900 dark:text-amber-400 px-10 py-4 text-lg hover:bg-navy-900 dark:hover:bg-amber-600 hover:text-white dark:hover:text-navy-900 transition-colors">
-                {t.hero.practiceBtn}
-              </a>
+              {/* 업무분야 button removed as requested */}
             </div>
           </div>
         </div>
@@ -672,7 +675,7 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="mt-12 p-8 bg-gray-50 dark:bg-slate-800 text-center">
+            <div className="mt-12 p-6 bg-gray-50 dark:bg-slate-800 text-center max-w-2xl mx-auto">
               <p className="text-gray-600 dark:text-gray-400 mb-4">{t.contact.consultText}</p>
               <a href="tel:0232763311" className="inline-block bg-navy-900 dark:bg-amber-600 text-white dark:text-navy-900 px-8 py-3 hover:bg-navy-800 dark:hover:bg-amber-500 transition-colors">
                 {t.contact.callBtn}
