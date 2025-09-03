@@ -177,7 +177,7 @@ export default function AttorneysPage() {
             <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
               <h1 className="text-2xl font-bold tracking-wider">
                 <span className="text-navy-900 dark:text-gray-100">법률사무소</span>
-                <span className="text-amber-600 dark:text-amber-400 ml-2">광화</span>
+                <span className="text-red-700 dark:text-red-500 ml-2">광화</span>
               </h1>
               <span className="ml-3 text-sm text-gray-500 dark:text-gray-400 hidden lg:block">
                 Law Office Gwanghwa
@@ -192,7 +192,7 @@ export default function AttorneysPage() {
               <Link href="/practice" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">
                 {t.nav.practice}
               </Link>
-              <Link href="/attorneys" className="text-amber-600 dark:text-amber-400 font-medium underline-animation">
+              <Link href="/attorneys" className="text-red-700 dark:text-red-500 font-medium underline-animation">
                 {t.nav.attorneys}
               </Link>
               <Link href="/about" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">
@@ -212,7 +212,7 @@ export default function AttorneysPage() {
                 aria-label="Toggle dark mode"
               >
                 {darkMode ? (
-                  <svg className="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
                   </svg>
                 ) : (
@@ -228,7 +228,7 @@ export default function AttorneysPage() {
                   onClick={() => changeLanguage('ko')}
                   className={`px-2 py-1 text-sm font-medium transition-colors ${
                     language === 'ko' 
-                      ? 'text-amber-600 dark:text-amber-400' 
+                      ? 'text-red-700 dark:text-red-500' 
                       : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
                   }`}
                 >
@@ -239,7 +239,7 @@ export default function AttorneysPage() {
                   onClick={() => changeLanguage('en')}
                   className={`px-2 py-1 text-sm font-medium transition-colors ${
                     language === 'en' 
-                      ? 'text-amber-600 dark:text-amber-400' 
+                      ? 'text-red-700 dark:text-red-500' 
                       : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
                   }`}
                 >
@@ -259,7 +259,7 @@ export default function AttorneysPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-navy-900 dark:text-gray-100 mb-4">
               {t.title}
             </h1>
-            <div className="w-24 h-0.5 bg-amber-600 dark:bg-amber-400 mx-auto mb-6"></div>
+            <div className="w-24 h-0.5 bg-red-700 dark:bg-red-500 mx-auto mb-6"></div>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
               {t.subtitle}
             </p>
@@ -274,7 +274,7 @@ export default function AttorneysPage() {
                     <div className="w-48 h-48 bg-gray-200 dark:bg-slate-700 rounded-full mx-auto mb-4 border-2 border-transparent dark:border-slate-600"></div>
                     <h3 className="text-2xl font-bold text-navy-900 dark:text-gray-100">{attorney.name}</h3>
                     <p className="text-gray-500 dark:text-gray-500 text-sm mb-2">{attorney.hanja}</p>
-                    <p className="text-amber-600 dark:text-amber-400 font-medium">{attorney.title}</p>
+                    <p className="text-red-700 dark:text-red-500 font-medium">{attorney.title}</p>
                   </div>
                   
                   <div className="text-left">
@@ -307,7 +307,7 @@ export default function AttorneysPage() {
           <div className="text-center mt-16">
             <Link 
               href="/"
-              className="inline-flex items-center bg-navy-900 dark:bg-amber-600 text-white dark:text-navy-900 px-8 py-3 hover:bg-navy-800 dark:hover:bg-amber-500 transition-colors"
+              className="inline-flex items-center bg-navy-900 dark:bg-red-600 text-white dark:text-white px-8 py-3 hover:bg-navy-800 dark:hover:bg-red-700 transition-colors"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />

@@ -100,7 +100,7 @@ export default function Home() {
             <div className="flex items-center">
               <h1 className="text-2xl font-bold tracking-wider">
                 <span className="text-navy-900 dark:text-gray-100">법률사무소</span>
-                <span className="text-amber-600 dark:text-amber-400 ml-2">광화</span>
+                <span className="text-red-700 dark:text-red-500 ml-2">광화</span>
               </h1>
               <span className="ml-3 text-sm text-gray-500 dark:text-gray-400 hidden lg:block">
                 Law Office Gwanghwa
@@ -109,7 +109,7 @@ export default function Home() {
             
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/" className="text-amber-600 dark:text-amber-400 font-medium underline-animation">{t.nav.home}</Link>
+              <Link href="/" className="text-red-700 dark:text-red-500 font-medium underline-animation">{t.nav.home}</Link>
               <Link href="/practice" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">{t.nav.practice}</Link>
               <Link href="/attorneys" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">{t.nav.attorneys}</Link>
               <Link href="/about" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">{t.nav.about}</Link>
@@ -123,7 +123,7 @@ export default function Home() {
                 aria-label="Toggle dark mode"
               >
                 {darkMode ? (
-                  <svg className="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
                   </svg>
                 ) : (
@@ -139,7 +139,7 @@ export default function Home() {
                   onClick={() => setLanguage('ko')}
                   className={`px-2 py-1 text-sm font-medium transition-colors ${
                     language === 'ko' 
-                      ? 'text-amber-600 dark:text-amber-400' 
+                      ? 'text-red-700 dark:text-red-500' 
                       : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
                   }`}
                 >
@@ -150,7 +150,7 @@ export default function Home() {
                   onClick={() => setLanguage('en')}
                   className={`px-2 py-1 text-sm font-medium transition-colors ${
                     language === 'en' 
-                      ? 'text-amber-600 dark:text-amber-400' 
+                      ? 'text-red-700 dark:text-red-500' 
                       : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
                   }`}
                 >
@@ -175,7 +175,7 @@ export default function Home() {
           {/* Mobile Menu */}
           {isMenuOpen && (
             <div className="md:hidden border-t dark:border-slate-800 py-4 space-y-3 bg-white dark:bg-slate-900">
-              <Link href="/" className="block py-2 text-amber-600 dark:text-amber-400">{t.nav.home}</Link>
+              <Link href="/" className="block py-2 text-red-700 dark:text-red-500">{t.nav.home}</Link>
               <Link href="/practice" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100">{t.nav.practice}</Link>
               <Link href="/attorneys" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100">{t.nav.attorneys}</Link>
               <Link href="/about" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100">{t.nav.about}</Link>
@@ -190,13 +190,13 @@ export default function Home() {
                 </button>
                 <button
                   onClick={() => setLanguage('ko')}
-                  className={`text-sm font-medium ${language === 'ko' ? 'text-amber-600 dark:text-amber-400' : 'text-gray-500 dark:text-gray-400'}`}
+                  className={`text-sm font-medium ${language === 'ko' ? 'text-red-700 dark:text-red-500' : 'text-gray-500 dark:text-gray-400'}`}
                 >
                   한국어
                 </button>
                 <button
                   onClick={() => setLanguage('en')}
-                  className={`text-sm font-medium ${language === 'en' ? 'text-amber-600 dark:text-amber-400' : 'text-gray-500 dark:text-gray-400'}`}
+                  className={`text-sm font-medium ${language === 'en' ? 'text-red-700 dark:text-red-500' : 'text-gray-500 dark:text-gray-400'}`}
                 >
                   English
                 </button>
@@ -216,7 +216,7 @@ export default function Home() {
                 光化
 
                 </div>
-                <div className="w-16 h-0.5 bg-amber-600 dark:bg-amber-400 mx-auto"></div>
+                <div className="w-16 h-0.5 bg-red-700 dark:bg-red-500 mx-auto"></div>
               </div>
             </div>
             
@@ -233,7 +233,7 @@ export default function Home() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="bg-navy-900 dark:bg-amber-600 text-white dark:text-navy-900 px-10 py-4 text-lg hover:bg-navy-800 dark:hover:bg-amber-500 transition-colors">
+              <Link href="/contact" className="bg-navy-900 dark:bg-red-600 text-white dark:text-white px-10 py-4 text-lg hover:bg-navy-800 dark:hover:bg-red-700 transition-colors">
                 {t.hero.contactBtn}
               </Link>
               {/* 업무분야 button removed as requested */}

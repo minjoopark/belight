@@ -105,7 +105,7 @@ export default function ContactPage() {
             <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
               <h1 className="text-2xl font-bold tracking-wider">
                 <span className="text-navy-900 dark:text-gray-100">법률사무소</span>
-                <span className="text-amber-600 dark:text-amber-400 ml-2">광화</span>
+                <span className="text-red-700 dark:text-red-500 ml-2">광화</span>
               </h1>
               <span className="ml-3 text-sm text-gray-500 dark:text-gray-400 hidden lg:block">
                 Law Office Gwanghwa
@@ -129,7 +129,7 @@ export default function ContactPage() {
               <Link href="/news" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">
                 {t.nav.news}
               </Link>
-              <Link href="/contact" className="text-amber-600 dark:text-amber-400 font-medium underline-animation">
+              <Link href="/contact" className="text-red-700 dark:text-red-500 font-medium underline-animation">
                 {t.nav.contact}
               </Link>
               
@@ -140,7 +140,7 @@ export default function ContactPage() {
                 aria-label="Toggle dark mode"
               >
                 {darkMode ? (
-                  <svg className="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
                   </svg>
                 ) : (
@@ -156,7 +156,7 @@ export default function ContactPage() {
                   onClick={() => changeLanguage('ko')}
                   className={`px-2 py-1 text-sm font-medium transition-colors ${
                     language === 'ko' 
-                      ? 'text-amber-600 dark:text-amber-400' 
+                      ? 'text-red-700 dark:text-red-500' 
                       : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
                   }`}
                 >
@@ -167,7 +167,7 @@ export default function ContactPage() {
                   onClick={() => changeLanguage('en')}
                   className={`px-2 py-1 text-sm font-medium transition-colors ${
                     language === 'en' 
-                      ? 'text-amber-600 dark:text-amber-400' 
+                      ? 'text-red-700 dark:text-red-500' 
                       : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
                   }`}
                 >
@@ -187,13 +187,13 @@ export default function ContactPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-navy-900 dark:text-gray-100 mb-4">
               {t.title}
             </h1>
-            <div className="w-24 h-0.5 bg-amber-600 dark:bg-amber-400 mx-auto"></div>
+            <div className="w-24 h-0.5 bg-red-700 dark:bg-red-500 mx-auto"></div>
           </div>
           
           {/* Contact Content */}
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
-              <div className="bg-white dark:bg-slate-800 p-8 border-l-4 border-amber-600 dark:border-amber-400 hover:shadow-lg dark:hover:shadow-slate-700/50 transition-shadow">
+              <div className="bg-white dark:bg-slate-800 p-8 border-l-4 border-red-700 dark:border-red-500 hover:shadow-lg dark:hover:shadow-slate-700/50 transition-shadow">
                 <h3 className="text-xl font-bold text-navy-900 dark:text-gray-100 mb-6">{t.contactTitle}</h3>
                 <div className="space-y-4 text-gray-700 dark:text-gray-300">
                   <div>
@@ -211,7 +211,7 @@ export default function ContactPage() {
                 </div>
               </div>
               
-              <div className="bg-white dark:bg-slate-800 p-8 border-l-4 border-amber-600 dark:border-amber-400 hover:shadow-lg dark:hover:shadow-slate-700/50 transition-shadow">
+              <div className="bg-white dark:bg-slate-800 p-8 border-l-4 border-red-700 dark:border-red-500 hover:shadow-lg dark:hover:shadow-slate-700/50 transition-shadow">
                 <h3 className="text-xl font-bold text-navy-900 dark:text-gray-100 mb-6">{t.addressTitle}</h3>
                 <div className="space-y-4 text-gray-700 dark:text-gray-300">
                   <p className="text-lg leading-relaxed">
@@ -237,7 +237,7 @@ export default function ContactPage() {
               <h3 className="text-2xl font-bold text-navy-900 dark:text-gray-100 mb-6 text-center">
                 {language === 'ko' ? '찾아오시는 길' : 'Location'}
               </h3>
-              <div className="bg-white dark:bg-slate-800 p-2 border-l-4 border-amber-600 dark:border-amber-400 shadow-lg dark:shadow-slate-700/50">
+              <div className="bg-white dark:bg-slate-800 p-2 border-l-4 border-red-700 dark:border-red-500 shadow-lg dark:shadow-slate-700/50">
                 <iframe
                   src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=ko&amp;q=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%A2%85%EB%A1%9C%EA%B5%AC%20%EC%83%88%EB%AC%B8%EC%95%88%EB%A1%9C92%20%EA%B4%91%ED%99%94%EB%AC%B8%EC%98%A4%ED%94%BC%EC%8B%9C%EC%95%84%201410%ED%98%B8+(Law%20Office%20Gwanghwa)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                   width="100%"
@@ -261,7 +261,7 @@ export default function ContactPage() {
             {/* Consultation Call-to-Action */}
             <div className="mt-12 p-8 bg-gray-50 dark:bg-slate-800 text-center max-w-2xl mx-auto">
               <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg">{t.consultText}</p>
-              <a href="tel:0232763311" className="inline-block bg-navy-900 dark:bg-amber-600 text-white dark:text-navy-900 px-8 py-3 hover:bg-navy-800 dark:hover:bg-amber-500 transition-colors">
+              <a href="tel:0232763311" className="inline-block bg-navy-900 dark:bg-red-600 text-white dark:text-white px-8 py-3 hover:bg-navy-800 dark:hover:bg-red-700 transition-colors">
                 {t.callBtn}
               </a>
             </div>
@@ -270,7 +270,7 @@ export default function ContactPage() {
             <div className="text-center mt-16">
               <Link 
                 href="/"
-                className="inline-flex items-center bg-navy-900 dark:bg-amber-600 text-white dark:text-navy-900 px-8 py-3 hover:bg-navy-800 dark:hover:bg-amber-500 transition-colors"
+                className="inline-flex items-center bg-navy-900 dark:bg-red-600 text-white dark:text-white px-8 py-3 hover:bg-navy-800 dark:hover:bg-red-700 transition-colors"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
