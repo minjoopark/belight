@@ -50,8 +50,10 @@ export default function AboutPage() {
   const content = {
     ko: {
       title: "법률사무소 광화",
-      desc1: "법률사무소 광화는 1991년 설립 이래 30년 이상 한결같은 자세로 의뢰인의 권익 보호에 최선을 다해왔습니다. 정의와 공정함을 최우선 가치로 삼아, 모든 의뢰인이 법 앞에서 평등한 권리를 보장받을 수 있도록 노력하고 있습니다.",
-      desc2: "특히 보험소송 분야에서 축적된 전문성과 경험을 바탕으로, 복잡한 법률 문제를 명확하고 효과적으로 해결하여 의뢰인에게 최상의 결과를 제공하고 있습니다.",
+      desc1: "법률사무소 광화(光化)는 문자 그대로 법률적으로 고객(Client)에게 빛이 되는 법률사무소를 지향합니다.",
+      desc2: "저희는 Client를 위한 최상의 법적 논리를 제공하고, 법률적 쟁점에 관한 정확한 분석을 통해 고객이 합리적 판단을 내릴 수 있도록 노력합니다. 저희는 단순한 법의 해석적용만을 위주로 삼지 않고 철저한 사실관계의 파악을 위해 매 사건, 매 쟁점마다 Client와 긴밀한 협의를 함은 물론, 사실관계 파악에 필요한 전문지식의 축적 및 자료파악에 전 구성원이 불철주야 힘쓰고 있습니다.",
+      desc3: "저희는 권위적이고 수동적인 자세에서 탈피하여 겸손하고 능동적인 자세로 고객의 권익확보를 최고의 가치로 여기고 수준높은 법률서비스를 제공함으로써 고객에게 빛이 될 것을 약속드립니다.",
+      desc4: "저희 광화는 배상책임, 특종보험, 화재보험, 장기상해보험, 의료과오, 제조물책임, 공제 등 각 분야에서 수많은 사례들을 다루면서 선도적 판례를 이끌어내고 있습니다. 저희는 보험소송뿐만 아니라 일반 기업관련 소송 및 법률자문분야에 있어서도 최고의 전문성을 확보하여 수준 높은 법률서비스를 제공하여 드리겠습니다.",
       coreValuesTitle: "핵심 가치",
       coreValues: [
         "정의와 공정함의 실현",
@@ -76,8 +78,10 @@ export default function AboutPage() {
     },
     en: {
       title: "Law Office Gwanghwa",
-      desc1: "Since its establishment in 1991, Law Office Gwanghwa has been dedicated to protecting clients' rights with unwavering commitment for over 30 years. With justice and fairness as our core values, we strive to ensure that all clients receive equal rights before the law.",
-      desc2: "Based on our accumulated expertise and experience in insurance litigation, we provide optimal results by resolving complex legal issues clearly and effectively.",
+      desc1: "Law Office Gwanghwa (光化) literally aspires to be a law firm that becomes a light for our clients in legal matters.",
+      desc2: "We provide the best legal reasoning for our clients and strive to help clients make rational decisions through accurate analysis of legal issues. Rather than focusing solely on the interpretation and application of law, we work tirelessly day and night to understand the facts thoroughly, maintaining close consultation with clients on every case and every issue, while accumulating the specialized knowledge and materials necessary for fact-finding.",
+      desc3: "We promise to be a light for our clients by departing from authoritative and passive attitudes, adopting humble and proactive approaches, considering the protection of client rights as our highest value, and providing high-quality legal services.",
+      desc4: "Gwanghwa has been leading landmark precedents while handling numerous cases in various fields including liability compensation, specialty insurance, fire insurance, long-term accident insurance, medical malpractice, product liability, and mutual aid. We will continue to provide high-quality legal services by securing the highest level of expertise not only in insurance litigation but also in general corporate litigation and legal advisory fields.",
       coreValuesTitle: "Core Values",
       coreValues: [
         "Realization of Justice and Fairness",
@@ -207,6 +211,14 @@ export default function AboutPage() {
               
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-lg">
                 {t.desc2}
+              </p>
+
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-lg">
+                {t.desc3}
+              </p>
+
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-lg">
+                {t.desc4}
               </p>
               
               <div className="grid md:grid-cols-2 gap-8 mt-12">

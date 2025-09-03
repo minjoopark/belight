@@ -75,7 +75,13 @@ export default function AttorneysPage() {
           ],
           specialties: [
             "대한교원공제회 공제심사위원",
-            "신용협동조합중앙회 분쟁조정위원"
+            "신용협동조합중앙회 분쟁조정위원",
+            "분쟁조정위원",
+            "보험법학회 감사",
+            "웅진공익재단 감사",
+            "금융감독원 분쟁조정위원회 전문위원",
+            "대한상사중재원 중재인",
+            "대한중재인협회 이사"
           ]
         },
         { 
@@ -133,7 +139,13 @@ export default function AttorneysPage() {
           ],
           specialties: [
             "Korean Teachers' Credit Union Review Committee Member",
-            "Credit Union Federation Dispute Resolution Committee Member"
+            "Credit Union Federation Dispute Resolution Committee Member",
+            "Dispute Resolution Committee Member",
+            "Insurance Law Society Auditor",
+            "Woongjin Public Interest Foundation Auditor",
+            "Financial Supervisory Service Dispute Resolution Committee Expert Member",
+            "Korean Commercial Arbitration Board Arbitrator",
+            "Korean Arbitrators Association Director"
           ]
         },
         { 
