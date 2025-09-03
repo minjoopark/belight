@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-export default function NewsPage() {
+export default function PracticeAreasPage() {
   const [language, setLanguage] = useState<'ko' | 'en'>('ko');
   const [darkMode, setDarkMode] = useState(false);
 
@@ -24,7 +24,6 @@ export default function NewsPage() {
       }
     }
 
-    // Get language from localStorage if available
     const savedLang = localStorage.getItem('language');
     if (savedLang === 'en' || savedLang === 'ko') {
       setLanguage(savedLang as 'ko' | 'en');
@@ -48,127 +47,11 @@ export default function NewsPage() {
     localStorage.setItem('language', lang);
   };
 
-  // News articles data
-  const newsArticles = [
-    {
-      id: 1,
-      date: "2025-08",
-      year: 2025,
-      publisher: {
-        ko: "한경비즈니스",
-        en: "Hankyung Business"
-      },
-      title: {
-        ko: "보험 분야 유일 선정 변호사",
-        en: "Sole Insurance Category Lawyer Selected"
-      },
-      description: {
-        ko: "변호사들이 직접 선택한 '내 사건을 맡기고 싶은 변호사'로 보험 분야에서 유일하게 선정되었습니다.",
-        en: "Selected as the only lawyer in the insurance category chosen by fellow lawyers as 'the lawyer they would trust with their own cases'."
-      },
-      url: "https://magazine.hankyung.com/business/article/202508213550b",
-      featured: true
-    },
-    {
-      id: 2,
-      date: "2024-11",
-      year: 2024,
-      publisher: {
-        ko: "리걸타임즈",
-        en: "Legal Times"
-      },
-      title: {
-        ko: "2024 보험 분야 리걸테이블 최상위 등급 선정",
-        en: "2024 Insurance Legal Table Top Tier Ranking"
-      },
-      description: {
-        ko: "보험 분야 전문성을 인정받아 리걸테이블에서 최상위 등급(Top Tier)으로 선정",
-        en: "Recognized for insurance expertise and selected as Top Tier in the Legal Table rankings"
-      },
-      url: "https://www.legaltimes.co.kr/news/articleView.html?idxno=83230",
-      featured: true
-    },
-    {
-      id: 3,
-      date: "2022-09",
-      year: 2022,
-      publisher: {
-        ko: "머니투데이",
-        en: "Money Today"
-      },
-      title: {
-        ko: "금감원, 6기 옴부즈만 외부전문가 위촉... 위원장에 박성원 변호사",
-        en: "FSS Appoints 6th Ombudsman External Experts... Attorney Park Sung-won as Chairman"
-      },
-      description: {
-        ko: "금융감독원이 제6기 금융분쟁조정위원회 옴부즈만 외부전문가로 박성원 변호사를 위원장으로 위촉",
-        en: "Financial Supervisory Service appoints Attorney Park Sung-won as Chairman of the 6th Financial Dispute Mediation Committee Ombudsman"
-      },
-      url: "https://news.mt.co.kr/mtview.php?no=2022092911241463542"
-    },
-    {
-      id: 4,
-      date: "2020-09",
-      year: 2020,
-      publisher: {
-        ko: "리걸타임즈",
-        en: "Legal Times"
-      },
-      title: {
-        ko: "보험분쟁 해결의 전문가",
-        en: "Expert in Insurance Dispute Resolution"
-      },
-      description: {
-        ko: "복잡한 보험분쟁 사건에서 의뢰인의 권익을 보호하며 성공적인 결과를 이끌어내는 법률사무소",
-        en: "A law firm that protects clients' rights and achieves successful outcomes in complex insurance dispute cases"
-      },
-      url: "https://www.legaltimes.co.kr/news/articleView.html?idxno=55646"
-    },
-    {
-      id: 5,
-      date: "2013-05",
-      year: 2013,
-      publisher: {
-        ko: "리걸타임즈",
-        en: "Legal Times"
-      },
-      title: {
-        ko: "보험소송 분야의 선도적 역할",
-        en: "Leading Role in Insurance Litigation"
-      },
-      description: {
-        ko: "보험소송 분야에서 선도적인 역할을 수행하며 법률 서비스의 새로운 기준을 제시",
-        en: "Playing a leading role in insurance litigation and setting new standards for legal services"
-      },
-      url: "https://legaltimes.co.kr/news/articleView.html?idxno=21097"
-    },
-    {
-      id: 6,
-      date: "2004-11",
-      year: 2004,
-      publisher: {
-        ko: "법률저널",
-        en: "Law Journal"
-      },
-      title: {
-        ko: "신뢰와 전문성의 법률사무소",
-        en: "Law Firm of Trust and Expertise"
-      },
-      description: {
-        ko: "설립 이래 꾸준한 성장을 거듭하며 신뢰받는 법률 파트너로 자리매김",
-        en: "Established as a trusted legal partner through consistent growth since inception"
-      },
-      url: "https://www.lec.co.kr/news/articleView.html?idxno=4611"
-    }
-  ];
-
   const content = {
     ko: {
-      title: "언론보도",
-      subtitle: "법률사무소 광화의 전문성과 성과를 다룬 주요 언론 보도",
+      title: "업무 분야",
+      subtitle: "보험소송 및 각종 분쟁 해결에 특화된 전문 법률 서비스",
       backToHome: "홈으로 돌아가기",
-      readMore: "기사 읽기",
-      featured: "주요 보도",
       nav: {
         home: "홈",
         practice: "업무분야",
@@ -176,14 +59,54 @@ export default function NewsPage() {
         about: "사무소 소개",
         news: "언론보도",
         contact: "오시는 길"
-      }
+      },
+      areas: [
+        { 
+          title: "생명보험 소송", 
+          details: [
+            "보험금(사망, 장해, 입원보험금 등) 채무 부존 재확인",
+            "계약효력, 보험금연체, 보험시기 등 각종 보험분쟁 관련 소송"
+          ]
+        },
+        { 
+          title: "의료소송", 
+          details: [
+            "의료사고, 의료과오, 설명의무위반 관련 손해배상",
+            "의사배상책임보험 등 각종 의료분쟁 관련 소송"
+          ]
+        },
+        { 
+          title: "화재보험소송", 
+          details: [
+            "방화, 실화, 원인불명의 화재 등 각종 화재보험 관련 소송"
+          ]
+        },
+        { 
+          title: "책임보험소송", 
+          details: [
+            "영업배상, 생산물배상, 유도선관리배상책임, 체육시설업자, 가스배상책임 등 각종 책임보험 관련 소송"
+          ]
+        },
+        { 
+          title: "제조물책임소송", 
+          details: [
+            "제조물의 결함(설계상의 결함, 제조상의 결함, 표시상의 결함)으로 인한 사고 소송",
+            "기업과 소비자, 소비자와 유통업자, 유통업자와 기업 등의 분쟁"
+          ]
+        },
+        { 
+          title: "구상금소송", 
+          details: [
+            "공동불법행위자나 제3자에 대한 손해배상청구 및 이에 관한 입증의 법률서비스",
+            "책임당사자에 대한 신뢰조사, 사전 법적조치 구상금의 회수 등"
+          ]
+        }
+      ]
     },
     en: {
-      title: "News Coverage",
-      subtitle: "Major media coverage highlighting the expertise and achievements of Gwanghwa Law Office",
+      title: "Practice Areas",
+      subtitle: "Specialized legal services in insurance litigation and dispute resolution",
       backToHome: "Back to Home",
-      readMore: "Read Article",
-      featured: "Featured",
       nav: {
         home: "Home",
         practice: "Practice Areas",
@@ -191,7 +114,49 @@ export default function NewsPage() {
         about: "About",
         news: "News",
         contact: "Contact"
-      }
+      },
+      areas: [
+        { 
+          title: "Life Insurance Litigation", 
+          details: [
+            "Insurance claim disputes (death, disability, hospitalization benefits)",
+            "Contract validity, premium disputes, and various insurance-related litigation"
+          ]
+        },
+        { 
+          title: "Medical Malpractice", 
+          details: [
+            "Medical accidents, malpractice, and breach of duty to inform",
+            "Medical professional liability insurance disputes"
+          ]
+        },
+        { 
+          title: "Fire Insurance Litigation", 
+          details: [
+            "Arson, accidental fires, and unknown cause fire insurance claims"
+          ]
+        },
+        { 
+          title: "Liability Insurance", 
+          details: [
+            "Commercial general liability, product liability, sports facility liability, and gas liability insurance disputes"
+          ]
+        },
+        { 
+          title: "Product Liability", 
+          details: [
+            "Product defects (design, manufacturing, and labeling defects) litigation",
+            "Disputes between businesses and consumers, retailers and distributors"
+          ]
+        },
+        { 
+          title: "Subrogation Claims", 
+          details: [
+            "Claims against joint tortfeasors and third parties",
+            "Investigation of liable parties and recovery of subrogation claims"
+          ]
+        }
+      ]
     }
   };
 
@@ -218,7 +183,7 @@ export default function NewsPage() {
               <Link href="/" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">
                 {t.nav.home}
               </Link>
-              <Link href="/practice" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">
+              <Link href="/practice" className="text-amber-600 dark:text-amber-400 font-medium underline-animation">
                 {t.nav.practice}
               </Link>
               <Link href="/attorneys" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">
@@ -227,7 +192,7 @@ export default function NewsPage() {
               <Link href="/about" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">
                 {t.nav.about}
               </Link>
-              <Link href="/news" className="text-amber-600 dark:text-amber-400 font-medium underline-animation">
+              <Link href="/news" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">
                 {t.nav.news}
               </Link>
               <Link href="/contact" className="text-gray-700 dark:text-gray-300 hover:text-navy-900 dark:hover:text-gray-100 transition font-medium underline-animation">
@@ -294,60 +259,20 @@ export default function NewsPage() {
             </p>
           </div>
 
-          {/* News Articles Grid */}
+          {/* Practice Areas Grid */}
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {newsArticles.map((article) => (
-                <article 
-                  key={article.id} 
-                  className={`bg-white dark:bg-slate-800 border dark:border-slate-700 hover:shadow-xl dark:hover:shadow-slate-700/50 transition-all duration-300 group ${
-                    article.featured ? 'ring-2 ring-amber-600 dark:ring-amber-400' : ''
-                  }`}
-                >
-                  <div className="p-6">
-                    {/* Featured Badge */}
-                    {article.featured && (
-                      <div className="mb-4">
-                        <span className="inline-block bg-amber-600 dark:bg-amber-400 text-white dark:text-navy-900 text-xs font-bold px-3 py-1 uppercase tracking-wider">
-                          {t.featured}
-                        </span>
-                      </div>
-                    )}
-
-                    {/* Date and Publisher */}
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-sm text-gray-500 dark:text-gray-400">
-                        {article.year}
-                      </span>
-                      <span className="text-sm font-medium text-navy-900 dark:text-gray-300">
-                        {article.publisher[language]}
-                      </span>
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-xl font-bold text-navy-900 dark:text-gray-100 mb-3 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
-                      {article.title[language]}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-3">
-                      {article.description[language]}
-                    </p>
-
-                    {/* Read More Link */}
-                    <a 
-                      href={article.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-amber-600 dark:text-amber-400 font-medium hover:text-amber-700 dark:hover:text-amber-300 transition-colors"
-                    >
-                      {t.readMore}
-                      <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                    </a>
-                  </div>
-                </article>
+              {t.areas.map((area, index) => (
+                <div key={index} className="bg-white dark:bg-slate-800 p-8 border-l-4 border-amber-600 dark:border-amber-400 hover:shadow-lg dark:hover:shadow-slate-700/50 transition-shadow">
+                  <h3 className="text-xl font-bold text-navy-900 dark:text-gray-100 mb-4">{area.title}</h3>
+                  <ul className="space-y-2">
+                    {area.details.map((detail, idx) => (
+                      <li key={idx} className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                        • {detail}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
             </div>
           </div>
