@@ -232,6 +232,32 @@ export default function ContactPage() {
               </div>
             </div>
             
+            {/* Map Section */}
+            <div className="mt-12 mb-12">
+              <h3 className="text-2xl font-bold text-navy-900 dark:text-gray-100 mb-6 text-center">
+                {language === 'ko' ? '찾아오시는 길' : 'Location'}
+              </h3>
+              <div className="bg-white dark:bg-slate-800 p-2 border-l-4 border-amber-600 dark:border-amber-400 shadow-lg dark:shadow-slate-700/50">
+                <iframe
+                  src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=ko&amp;q=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%A2%85%EB%A1%9C%EA%B5%AC%20%EC%83%88%EB%AC%B8%EC%95%88%EB%A1%9C92%20%EA%B4%91%ED%99%94%EB%AC%B8%EC%98%A4%ED%94%BC%EC%8B%9C%EC%95%84%201410%ED%98%B8+(Law%20Office%20Gwanghwa)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                  width="100%"
+                  height="400"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="rounded"
+                  title={language === 'ko' ? '법률사무소 광화 위치' : 'Law Office Gwanghwa Location'}
+                />
+              </div>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">
+                {language === 'ko' 
+                  ? '지도를 클릭하시면 길찾기 및 상세 정보를 확인하실 수 있습니다.'
+                  : 'Click on the map for directions and detailed information.'
+                }
+              </p>
+            </div>
+
             {/* Consultation Call-to-Action */}
             <div className="mt-12 p-8 bg-gray-50 dark:bg-slate-800 text-center max-w-2xl mx-auto">
               <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg">{t.consultText}</p>
