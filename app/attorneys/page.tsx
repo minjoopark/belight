@@ -96,14 +96,14 @@ export default function AttorneysPage() {
           specialties: []
         },
         { 
-          name: "허현회", 
+          name: "허현희", 
           title: "변호사",
           hanja: "許 賢 喜",
           timeline: [
             { year: "1998", event: "서강대학교 법학과 졸업" },
             { year: "2000", event: "제42회 사법시험 합격" },
             { year: "2003", event: "사법연수원 제32기 수료" },
-            { year: "2023", event: "現 법률사무소 광화 대표변호사" }
+            { year: "2023", event: "現 법률사무소 광화 변호사" }
           ],
           specialties: [
             "한국보험법학회 이사",
